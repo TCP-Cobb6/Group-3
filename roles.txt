@@ -1,0 +1,12 @@
+ROLES
+-----
+1. DATA: Records, Arrays, What the Toppings are, What the pizza sizes are - Courtney
+
+2. USER INPUT: key presses and routing them to the right place - Miles
+
+3. OUTPUT / BEHAVIOR: printing the menu, printing the order, adding up the total - Latifah
+
+4. Leader?: project outline, coaching, help with questions, manage the repo online - Cody
+
+
+
