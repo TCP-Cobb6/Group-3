@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class App {
@@ -27,6 +28,13 @@ public class App {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
+		
+		HashMap<Pizza_Size, Double> pizza_size_prices = new HashMap<>();
+		
+		pizza_size_prices.put(Pizza_Size.Personal, 9.99);
+		pizza_size_prices.put(Pizza_Size.Medium, 12.99);
+		pizza_size_prices.put(Pizza_Size.Large, 14.99);
+		
 		// TODO Print greeting
 		// TODO Ask for name
 		System.out.print("What is your name? ");
