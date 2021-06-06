@@ -37,8 +37,8 @@ public class App {
 		
 		// TODO Print greeting
 		// TODO Ask for name
-		System.out.print("What is your name? ");
-		String user = in.next();
+	//	System.out.print("What is your name? ");
+	//	String user = in.next();
 
 		// TODO Print menu and current order
 
@@ -50,26 +50,30 @@ public class App {
 
 		System.out.println("MENU ITEMS:");
 		System.out.println("PIZZA SIZES:");
+		
 		for (Pizza_Size PizzaSize : Pizza_Size.values()) {
-
-			System.out.println(PizzaSize.toString());
+			Double pizzaPrice = pizza_size_prices.get(PizzaSize);
+			System.out.printf("%3.2f %s ", pizzaPrice, PizzaSize.toString());
 		}
 
 		System.out.println("MENU ITEMS:");
 		System.out.println("TOPPINGS:");
 
 		for (Toppings topping : Toppings.values()) {
-			System.out.println(topping.toString());
-
+			// Double toppingPrice = topping_prices.get(ToppingSize);
+			System.out.printf(topping.toString());
 		}
 
 		System.out.println("MENU ITEMS:");
 		System.out.println("DRINK SIZES:");
 
 		for (Drink_Size DrinkSize : Drink_Size.values()) {
-			System.out.println(DrinkSize.toString());
+			//Double drinkPrice = drinl_prices.get(DrinkSize);
+			System.out.printf(DrinkSize.toString());
 		}
 
+		
+		
 		// TODO Take order
 		// 1. Gather input
 		// 2. Change order based on input
