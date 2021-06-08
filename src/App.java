@@ -105,11 +105,11 @@ public class App {
 		
 		// add the cost of each topping
 		for (Toppings topping : order.Pizza.Toppings) {
-			total += pizza_topping_prices.get(topping);
+//			total += pizza_topping_prices.get(topping);
 		}
 		
 		// add the cost of the drink size
-		total += drink_size_prices.get(order.Drink);
+//		total += drink_size_prices.get(order.Drink);
 		
 		// print the result
 		System.out.printf("Total cost: %.2f \n", total);
