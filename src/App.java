@@ -20,13 +20,43 @@ public class App {
 		Medium, Large, Family
 	};
 
-	record Order(boolean delivery, Pizza pizza, Drink_Size drink) {
+	record Pizza(Pizza_Size Size, HashSet<Toppings_Meats> meats, HashSet<Toppings_Veggies> veggies) {
+
+		public String toString() {
+			String pizzaDetails = Size.toString() + "\n";
+
+			pizzaDetails += "Pizza Toppings Selected: \n ";
+			for (Toppings topping : userToppings) {
+				pizzaDetails = pizzaDetails + topping.toString() + ", "  + "\n";
+			}
+
+			return pizzaDetails;
+		}
 	}
 
-	record Pizza(Pizza_Size size, HashSet<Toppings_Meats> meats, HashSet<Toppings_Veggies> veggies) {
+	record Order(boolean delivery, Pizza pizza, Drink_Size drink) {
+
+		public String toString() {
+			// String completeOrder = Delivery.toString();
+
+			String completeOrder = "Delivery Option: \n ";
+					
+			completeOrder += (Delivery ? "Yes" : "No") + "\n";
+
+			completeOrder += "Pizza Size Selected: \n ";
+			completeOrder += Pizza.toString() + "\n";
+
+			completeOrder += "Drink Selection: \n ";
+			completeOrder += Drink.toString() + "\n ";
+
+			return completeOrder;
+		}
+
 	}
 
 	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+
 		// initialize menu prices
 		HashMap<Pizza_Size, Double> pizza_size_prices = new HashMap<>();
 		pizza_size_prices.put(Pizza_Size.Personal, 9.99);
@@ -53,8 +83,79 @@ public class App {
 		VeggieToppingPrice.put(Toppings_Veggies.Olives, 1.00);
 		VeggieToppingPrice.put(Toppings_Veggies.Onions, 0.75);
 		
-		
+		// TODO Print greeting
+		// TODO Ask for name
+		// System.out.print("What is your name? ");
+		// String user = in.next();
 
+		// TODO Print menu and current order
+
+		// System.out.println(Toppings.Artichoke.toString());
+
+
+		System.out.println("MENU ITEMS:");
+		System.out.println("PIZZA SIZES:");
+
+		for (Pizza_Size PizzaSize : Pizza_Size.values()) {
+			Double pizzaPrice = pizza_size_prices.get(PizzaSize);
+			System.out.printf("%s %.2f \n ", PizzaSize.toString(), pizzaPrice);
+		}
+
+		System.out.println("PIZZA TOPPINGS:");
+
+		for (Toppings topping : Toppings.values()) {
+			// Double toppingPrice = topping_prices.get(ToppingSize);
+			//System.out.printf("%s %.2f \n ", topping.toString(), toppingPrice);
+		}
+
+		System.out.println("DRINK SIZES:");
+
+		for (Drink_Size DrinkSize : Drink_Size.values()) {
+			// Double drinkPrice = drinl_prices.get(DrinkSize);
+			// System.out.printf("%s %.2f \n ", DrinkSize.toString(), drinkPrice);
+		}
+
+		// TODO Take order
+		// 1. Gather input
+		// 2. Change order based on input
+		// 3. Print new order
+		// 4. Return to step 1 or finish order
+
+		// TODO Calculate and print summary
+
+		Order order = new Order(false, new Pizza(Pizza_Size.Large, new HashSet()), Drink_Size.Family);
+		
+		order.pizza.veggies.add(Toppings_Veggies.Artichoke);
+		
+		order.pizza.meats.add(Toppings_Meats.Pepperoni);
+		
+		System.out.println();
+		
+		System.out.println(order.toString());
+		
+		
+		// initialize the running total
+				double total = 0;
+				// add the cost of the pizza size
+				total += pizza_size_prices.get(order.pizza.size);
+				
+				// add the cost of each veggie topping
+				for (Toppings_Veggies topping : order.pizza.veggies) {
+					total += VeggieToppingPrice.get(topping);
+				}
+				
+				// add the cost of each meat topping
+				for (Toppings_Meats topping : order.pizza.meats) {
+					total += MeatToppingPrice.get(topping);
+				}
+				
+				// add the cost of the drink size
+				total += DrinksPrice.get(order.drink);
+				
+				// print the result
+				System.out.printf("Total cost: %.2f \n", total);
+		
 	}
 
+	
 }
